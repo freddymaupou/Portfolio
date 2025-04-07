@@ -1,0 +1,34 @@
+.project {
+    opacity: 0;
+    transform: translate(50px);
+}
+
+@keyframes fadeInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px)
+    };
+    100%{
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    };
+    100%{
+        opacity: 0;
+        transform: translateY(-50px)
+    }
+}
+
+.fade-in-bottom {
+    animation: fadeInBottom 0.7s both;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.7s both;
+}
