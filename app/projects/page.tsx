@@ -67,15 +67,29 @@ export default function Projects(){
             projectsDiv.forEach(project => {
                 const bottom = project.getBoundingClientRect().bottom;
                 const top = project.getBoundingClientRect().top;
-                console.log("Top: " + top);
-                console.log("Height: " + window.innerHeight)
+                // console.log("Top: " + top);
+                // console.log("Bottom: " + bottom);
+                // console.log("Height: " + window.innerHeight)
 
                 if(bottom < window.innerHeight + 50){
                     project.classList.add("fade-in-bottom");
+                    if(project.classList.contains("fade-in-up")){
+                        project.classList.remove("fade-in-up");
+                    }
                 }
 
                 if(top < -120){
                     project.classList.add("fade-in-up");
+                    if(project.classList.contains("fade-in-bottom")){
+                        project.classList.remove("fade-in-bottom");
+                    }
+                }
+
+                if(top > window.innerHeight - 100){
+                    project.classList.add("fade-in-up");
+                    if(project.classList.contains("fade-in-bottom")){
+                        project.classList.remove("fade-in-bottom");
+                    }
                 }
             })
         })
