@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import "@/app/projects/style.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Project = {
     srcImg: string,
@@ -14,86 +14,132 @@ type Project = {
 
 const allP: Project[] = [
     {
-        srcImg: "/hollow-knight.jpg",
-        title: "Project name",
-        job: "Job",
-        year: 2025,
+        srcImg: "/doompa_loompa.png",
+        title: "Doompa Loompa",
+        job: "Gameplay Programmer",
+        year: 2021,
         tasks: ["First Task", "Second Task", "Third Task"],
     },
     {
-        srcImg: "/hollow-knight.jpg",
-        title: "Project name",
+        srcImg: "/mega_black_hole.png",
+        title: "Gameplay Programmer & Game Designer",
         job: "Job",
-        year: 2025,
+        year: 2022,
         tasks: ["First Task", "Second Task", "Third Task"],
     },
     {
-        srcImg: "/hollow-knight.jpg",
-        title: "Project name",
-        job: "Job",
-        year: 2025,
+        srcImg: "/tonatiuh_itza.png",
+        title: "Tonatiuh Itza",
+        job: "Lead Gameplay Programmer",
+        year: 2022,
         tasks: ["First Task", "Second Task", "Third Task"],
     },
     {
-        srcImg: "/hollow-knight.jpg",
-        title: "Project name",
-        job: "Job",
-        year: 2025,
+        srcImg: "/ou_est_gil.png",
+        title: "Où est Gil ?",
+        job: "Gameplay Programmer",
+        year: 2022,
         tasks: ["First Task", "Second Task", "Third Task"],
     },
     {
-        srcImg: "/hollow-knight.jpg",
-        title: "Project name",
-        job: "Job",
-        year: 2025,
+        srcImg: "/olympos_drama.jpg",
+        title: "Olympos Drama",
+        job: "Gameplay Programmer",
+        year: 2022,
         tasks: ["First Task", "Second Task", "Third Task"],
     },
     {
-        srcImg: "/hollow-knight.jpg",
-        title: "Project name",
-        job: "Job",
-        year: 2025,
+        srcImg: "/eva.png",
+        title: "Eva",
+        job: "Gameplay Programmer",
+        year: 2022,
         tasks: ["First Task", "Second Task", "Third Task"],
+    },
+    {
+        srcImg: "/dont_mess_with_vampires.png",
+        title: "Don't Mess With Vampires",
+        job: "Gameplay Programmer",
+        year: 2022,
+        tasks: ["First Task", "Second Task", "Third Task"],
+    },
+    {
+        srcImg: "/game_hatch.png",
+        title: "Game & Hatch",
+        job: "Gameplay Programmer",
+        year: 2022,
+        tasks: ["First Task", "Second Task", "Third Task"],
+    },
+    {
+        srcImg: "/shovel_hell.png",
+        title: "Shovel Hell",
+        job: "Lead Gameplay Programmer",
+        year: 2022,
+        tasks: ["First Task", "Second Task", "Third Task"],
+    },
+    {
+        srcImg: "/fill_it.png",
+        title: "Fill It!",
+        job: "Gameplay Programmer",
+        year: 2023,
+        tasks: ["First Task", "Gamefeel", "Animation"],
+    },
+    {
+        srcImg: "/the_frozen_barrel.png",
+        title: "The Frozen Barrel",
+        job: "Lead Gameplay Programmer",
+        year: 2023,
+        tasks: ["Système de Dialogue et de Choix", "Parsing et Tri de texte à partir d'un fichier CSV", "Gamefeel apparition/disparition de personnages"],
     }
-
 ]
 
-
 export default function Projects(){
-    
+    const [isFirstLook, setIsFirstLook] = useState<boolean>(false);
+
     useEffect(() => {
         const projectsDiv = document.querySelectorAll(".project");
-        window.addEventListener("scroll", () => {
+        const windowHeight = window.innerHeight;
+
+        // animate the firsts projects divs when coming to /projects
+        if(!isFirstLook){
             projectsDiv.forEach(project => {
+                if(project.getBoundingClientRect().top < (windowHeight - 50) || project.getBoundingClientRect().bottom < (windowHeight + 50)){
+                    project.classList.add("fade-in-bottom");
+                }
+            })
+            setIsFirstLook(true);
+        }
+
+        window.addEventListener("scroll", () => {
+            //console.log("Height: " + windowHeight) // 919
+            projectsDiv.forEach((project, key) => {
                 const bottom = project.getBoundingClientRect().bottom;
                 const top = project.getBoundingClientRect().top;
-                // console.log("Top: " + top);
-                // console.log("Bottom: " + bottom);
-                // console.log("Height: " + window.innerHeight)
+                //console.log(key + " Top: " + top);
+                //console.log("Bottom: " + bottom);
 
-                if(bottom < window.innerHeight + 50){
+                if(bottom < windowHeight + 50){
                     project.classList.add("fade-in-bottom");
-                    if(project.classList.contains("fade-in-up")){
-                        project.classList.remove("fade-in-up");
+                    if(project.classList.contains("fade-out-up")){
+                        project.classList.remove("fade-out-up");
                     }
                 }
 
                 if(top < -120){
-                    project.classList.add("fade-in-up");
+                    project.classList.add("fade-out-up");
                     if(project.classList.contains("fade-in-bottom")){
                         project.classList.remove("fade-in-bottom");
                     }
                 }
-
-                if(top > window.innerHeight - 100){
-                    project.classList.add("fade-in-up");
+                
+                if(top > (windowHeight - 100)){
+                    project.classList.add("fade-out-up");
                     if(project.classList.contains("fade-in-bottom")){
                         project.classList.remove("fade-in-bottom");
                     }
                 }
             })
         })
-    }, [])
+    }, [isFirstLook])
 
     return (
     <>

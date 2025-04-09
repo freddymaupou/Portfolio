@@ -14,7 +14,7 @@
     }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeOutUp {
     0% {
         opacity: 1;
         transform: translate(0)
@@ -29,6 +29,6 @@
     animation: fadeInBottom 0.7s both;
 }
 
-.fade-in-up {
-    animation: fadeInUp 0.7s both;
+.fade-out-up {
+    animation: fadeOutUp 0.7s both;
 }
