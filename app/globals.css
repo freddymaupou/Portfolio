@@ -28,3 +28,9 @@ body {
 form > * {
   margin-top: 20px;
 }
+
+@layer utilities{
+  .text-last-center{
+      text-align-last: center;
+  }
+}

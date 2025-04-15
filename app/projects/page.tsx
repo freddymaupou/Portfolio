@@ -111,7 +111,7 @@ export default function Projects(){
 
         window.addEventListener("scroll", () => {
             //console.log("Height: " + windowHeight) // 919
-            projectsDiv.forEach((project, key) => {
+            projectsDiv.forEach(project => {
                 const bottom = project.getBoundingClientRect().bottom;
                 const top = project.getBoundingClientRect().top;
                 //console.log(key + " Top: " + top);
@@ -146,7 +146,7 @@ export default function Projects(){
     {allP.map((project, index) => {
         if(index % 2 === 0){
             return (
-            <div key={index} className="project flex flex-row justify-evenly items-center mb-[50] mt-[50]">
+            <div key={index} className="project flex flex-row justify-evenly items-center mb-[50] mt-[50] h-[350]">
                 {/* should be the same width as the image or the text for the border to be centered */}
                 <div className="w-[500]">
                     <h1>{project.title} - {project.job}</h1>
@@ -163,13 +163,13 @@ export default function Projects(){
                 <div className="h-[50] border border-solid border-white">
                 </div>
 
-                <Image src={project.srcImg} alt={project.title} width={500} height={500}/>
+                <Image src={project.srcImg} alt={project.title} width={350} height={350}/>
             </div>
             );
         } else{
             return (
-            <div key={index} className="project flex flex-row justify-evenly items-center mb-[50] mt-[50]">
-                <Image src={project.srcImg} alt={project.title} width={500} height={500}/>
+            <div key={index} className="project flex flex-row justify-evenly items-center mb-[50] mt-[50] h-[350]">
+                <Image src={project.srcImg} alt={project.title} width={350} height={350}/>
 
                 <div className="h-[50] border border-solid border-white">
                 </div>
