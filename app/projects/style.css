@@ -6,11 +6,11 @@
 @keyframes fadeInBottom {
     0% {
         opacity: 0;
-        transform: translateY(50px)
+        transform: translate(0, 50px)
     };
     100%{
         opacity: 1;
-        transform: translateY(0)
+        transform: translate(0)
     }
 }
 
@@ -21,7 +21,7 @@
     };
     100%{
         opacity: 0;
-        transform: translateY(-50px)
+        transform: translate(0, -50px)
     }
 }
 
