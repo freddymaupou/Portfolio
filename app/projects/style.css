@@ -32,3 +32,27 @@
 .fade-out-up {
     animation: fadeOutUp 0.7s both;
 }
+
+@keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    };
+    100%{
+        opacity: 0;
+        transform: translateX(-500px);
+    }
+}
+
+.images {
+    width: 100%;
+}
+
+.fade-out-left {
+    animation: fadeOutLeft 0.5s both;
+    z-index: -1;
+}
+
+li {
+    font-size: 23px;
+}
